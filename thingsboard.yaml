@@ -49,7 +49,6 @@ subpackages:
         - ${{package.name}}-tb-mqtt-transport=${{package.full-version}}
     pipeline:
       - runs: |
-          mvn clean install -DskipTests -Dlicense.skip=true
           cd transport/mqtt/target
           dpkg-deb -x *.deb ${{targets.subpkgdir}}
     test:
