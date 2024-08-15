@@ -5,11 +5,6 @@ package:
   description: "Open-source IoT Platform - Device management, data collection, processing and visualization."
   copyright:
     - license: Apache-2.0
-  dependencies:
-    runtime:
-      - nodejs-16
-      - openjdk-17
-      - openjdk-17-default-jvm
 
 environment:
   contents:
@@ -62,8 +57,8 @@ subpackages:
     test:
       pipeline:
         - runs: |
-            echo "TODO: Test tb-mqtt-transport"
-            exit 1
+            java -jar /usr/share/tb-mqtt-transport/bin/tb-mqtt-transport.jar > output.log
+            grep -q "Starting ThingsboardMqttTransportApplication v\${{package.version}}" output.log && exit 0 || exit 1
 
   - name: "${{package.name}}-tb-node"
     description: ""
