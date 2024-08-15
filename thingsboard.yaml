@@ -51,6 +51,10 @@ subpackages:
     dependencies:
       provides:
         - ${{package.name}}-tb-mqtt-transport=${{package.full-version}}
+      runtime:
+        - nodejs-16
+        - openjdk-17
+        - openjdk-17-default-jvm
     pipeline:
       - runs: |
           cd transport/mqtt/target
