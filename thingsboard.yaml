@@ -5,6 +5,11 @@ package:
   description: "Open-source IoT Platform - Device management, data collection, processing and visualization."
   copyright:
     - license: Apache-2.0
+  dependencies:
+    runtime:
+      - nodejs-16
+      - openjdk-17
+      - openjdk-17-default-jvm
 
 environment:
   contents:
@@ -15,12 +20,8 @@ environment:
       - dpkg # dpkg requires gnutar and xz
       - gnutar
       - maven
-      - nodejs-16
-      - openjdk-17
-      - openjdk-17-default-jvm
       - xz
       - yarn
-
 pipeline:
   - uses: git-checkout
     with:
