@@ -59,8 +59,9 @@ subpackages:
     test:
       pipeline:
         - runs: |
-            java -jar /usr/share/tb-mqtt-transport/bin/tb-mqtt-transport.jar > output.log
-            grep -q "Starting ThingsboardMqttTransportApplication" output.log && exit 0 || exit 1
+            echo "1"
+            java -jar /usr/share/tb-mqtt-transport/bin/tb-mqtt-transport.jar | grep -q "Starting ThingsboardMqttTransportApplication" && exit 0 || exit 1
+            echo "2"
 
   - name: "${{package.name}}-tb-node"
     description: ""
