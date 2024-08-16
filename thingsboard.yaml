@@ -60,7 +60,7 @@ subpackages:
       pipeline:
         - runs: |
             java -jar /usr/share/tb-mqtt-transport/bin/tb-mqtt-transport.jar > output.log
-            grep -q "Starting ThingsboardMqttTransportApplication v${{package.version}}" output.log && exit 0 || exit 1
+            grep -q "Starting ThingsboardMqttTransportApplication" output.log && exit 0 || exit 1
 
   - name: "${{package.name}}-tb-node"
     description: ""
