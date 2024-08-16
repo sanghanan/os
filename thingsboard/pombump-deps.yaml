@@ -1,7 +1,7 @@
 patches:
-  # Fixes CVE-2022-24329 and CVE-2020-29582
-  - groupId: com.squareup.wire
-    artifactId: wire-schema
-    version: 3.7.1
+  # Fixes CVE-2024-34750
+  - groupId: org.springframework.boot
+    artifactId: spring-boot-starter-web
+    version: 3.3.2
     scope: compile
     type: pom
