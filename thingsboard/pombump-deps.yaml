@@ -5,3 +5,8 @@ patches:
     version: 3.3.2
     scope: compile
     type: pom
+  - groupId: net.minidev
+    artifactId: json-smart
+    version: 2.5.1
+    scope: compile
+    type: pom
