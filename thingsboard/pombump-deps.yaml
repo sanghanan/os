@@ -1,0 +1,7 @@
+patches:
+  # Fixes CVE-2022-24329 and CVE-2020-29582
+  - groupId: com.squareup.wire
+    artifactId: wire-schema
+    version: 5.0.0
+    scope: compile
+    type: pom
