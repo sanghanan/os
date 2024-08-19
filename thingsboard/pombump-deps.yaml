@@ -1,7 +1,0 @@
-patches:
-  # Fixes CVE-2024-34750
-  - groupId: org.springframework.boot
-    artifactId: spring-boot-starter-web
-    version: 3.3.2
-    scope: compile
-    type: pom
