@@ -20,6 +20,7 @@ environment:
       - openjdk-17-default-jvm
       - xz
       - yarn
+      
 pipeline:
   - uses: git-checkout
     with:
