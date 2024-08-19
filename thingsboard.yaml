@@ -18,7 +18,6 @@ environment:
       - nodejs-16
       - openjdk-17
       - openjdk-17-default-jvm
-      - perl
       - xz
       - yarn
 pipeline:
