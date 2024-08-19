@@ -32,7 +32,8 @@ pipeline:
 
   # See https://github.com/Azure/azure-sdk-for-java/issues/25829#issuecomment-988219962
   - runs: | 
-      sed -i 's/<spring-boot-starter-web>3.2.4<\/spring-boot-starter-web>/<spring-boot-starter-web>3.3.2<\/spring-boot-starter-web>/g' pom.xml
+      sed -i 's/<spring-boot.version>3.2.4<\/spring-boot.version>/<spring-boot.version>3.3.2<\/spring-boot.version>/g' filename.xml
+
 
   - runs: |
       mvn clean install -DskipTests -Dlicense.skip=true
