@@ -20,7 +20,7 @@ environment:
       - openjdk-17-default-jvm
       - xz
       - yarn
-      
+
 pipeline:
   - uses: git-checkout
     with:
@@ -60,9 +60,7 @@ subpackages:
     test:
       pipeline:
         - runs: |
-            echo "1"
             java -jar /usr/share/tb-mqtt-transport/bin/tb-mqtt-transport.jar | grep -q "Starting ThingsboardMqttTransportApplication" && exit 0 || exit 1
-            echo "2"
 
   - name: "${{package.name}}-tb-node"
     description: ""
