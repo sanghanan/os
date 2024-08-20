@@ -111,6 +111,8 @@ subpackages:
   - name: "${{package.name}}-tb-node"
     description: "Core service responsible for handling REST API, WebSocket subscriptions, and processing messages via the rule engine."
     dependencies:
+      provides:
+        - ${{package.name}}-tb-node=${{package.full-version}}
       runtime:
         - openjdk-17
         - openjdk-17-default-jvm
