@@ -5,6 +5,9 @@ package:
   description: "Open-source IoT Platform - Device management, data collection, processing and visualization."
   copyright:
     - license: Apache-2.0
+  dependencies:
+    provides:
+      - thingsboard=${{package.full-version}}
 
 environment:
   contents:
@@ -38,6 +41,8 @@ subpackages:
   - name: "${{package.name}}-tb-js-executor"
     description: "Executes user-defined JavaScript functions in isolation for the ThingsBoard rule engine."
     dependencies:
+      provides:
+        - ${{package.name}}-tb-js-executor=${{package.full-version}}
       runtime:
         - nodejs-16
     pipeline:
@@ -81,6 +86,8 @@ subpackages:
   - name: "${{package.name}}-tb-mqtt-transport"
     description: Handles MQTT-based device communication and API requests for ThingsBoard.
     dependencies:
+      provides:
+        - ${{package.name}}-tb-mqtt-transport=${{package.full-version}}
       runtime:
         - openjdk-17
         - openjdk-17-default-jvm
@@ -127,6 +134,8 @@ subpackages:
   - name: "${{package.name}}-tb-web-ui"
     description: "Hosts static web UI content using a lightweight Express.js component"
     dependencies:
+      provides:
+        - ${{package.name}}-tb-web-ui=${{package.full-version}}
       runtime:
         - nodejs-16
     pipeline:
