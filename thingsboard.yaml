@@ -9,9 +9,11 @@ package:
 environment:
   contents:
     packages:
+      - bash
       - build-base
       - busybox
       - ca-certificates-bundle
+      - coreuitls
       - dpkg # dpkg requires gnutar and xz
       - gnutar
       - jq
