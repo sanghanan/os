@@ -9,11 +9,9 @@ package:
 environment:
   contents:
     packages:
-      - bash
       - build-base
       - busybox
       - ca-certificates-bundle
-      - coreutils
       - dpkg # dpkg requires gnutar and xz
       - gnutar
       - jq
@@ -107,6 +105,7 @@ subpackages:
     description: "Core service responsible for handling REST API, WebSocket subscriptions, and processing messages via the rule engine."
     dependencies:
       runtime:
+        - eudev
         - openjdk-17
         - openjdk-17-default-jvm
     pipeline:
