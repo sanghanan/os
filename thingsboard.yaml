@@ -13,7 +13,7 @@ environment:
       - build-base
       - busybox
       - ca-certificates-bundle
-      - coreuitls
+      - coreutils
       - dpkg # dpkg requires gnutar and xz
       - gnutar
       - jq
