@@ -14,9 +14,11 @@ environment:
       - ca-certificates-bundle
       - dpkg # dpkg requires gnutar and xz
       - fontconfig
+      - fontconfig-config
       - gnutar
       - jq
       - lcms2
+      - libfontconfig1
       - maven
       - nodejs-16
       - openjdk-17
@@ -109,7 +111,9 @@ subpackages:
       runtime:
         - eudev
         - fontconfig
+        - fontconfig-config
         - lcms2
+        - libfontconfig1
         - openjdk-17
         - openjdk-17-default-jvm
     pipeline:
