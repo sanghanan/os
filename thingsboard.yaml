@@ -12,7 +12,7 @@ environment:
       - build-base
       - busybox
       - ca-certificates-bundle
-      - dpkg # dpkg requires gnutar and xz
+      - dpkg
       - fontconfig
       - gnutar
       - jq
@@ -108,13 +108,12 @@ subpackages:
     description: "Core service responsible for handling REST API, WebSocket subscriptions, and processing messages via the rule engine."
     dependencies:
       runtime:
-        - busybox # remove this after testing
         - eudev
-        - fontconfig # fontconfig
-        - lcms2 # required to fix liblcms2
+        - fontconfig
+        - lcms2
         - openjdk-17
         - openjdk-17-default-jvm
-        - ttf-dejavu # default font
+        - ttf-dejavu
     pipeline:
       - name: Extract tb-node to target directories
         runs: |
