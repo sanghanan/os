@@ -107,6 +107,7 @@ subpackages:
     dependencies:
       runtime:
         - eudev
+        - lcms2
         - openjdk-17
         - openjdk-17-default-jvm
     pipeline:
@@ -133,7 +134,6 @@ subpackages:
     dependencies:
       runtime:
         - nodejs-16
-        - lcms2
     pipeline:
       - name: Move tb-web-ui to target directories
         runs: |
