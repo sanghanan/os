@@ -21,6 +21,7 @@ environment:
       - nodejs-16
       - openjdk-17
       - openjdk-17-default-jvm
+      - ttf-dejavu
       - xz
       - yarn
 
@@ -107,12 +108,13 @@ subpackages:
     description: "Core service responsible for handling REST API, WebSocket subscriptions, and processing messages via the rule engine."
     dependencies:
       runtime:
-        - busybox #remove this after testing
+        - busybox # remove this after testing
         - eudev
-        - fontconfig
-        - lcms2
+        - fontconfig # fontconfig
+        - lcms2 # required to fix liblcms2
         - openjdk-17
         - openjdk-17-default-jvm
+        - ttf-dejavu # default font
     pipeline:
       - name: Extract tb-node to target directories
         runs: |
@@ -123,10 +125,10 @@ subpackages:
           mkdir -p ${{targets.subpkgdir}}/config
           cp -r ${{targets.subpkgdir}}/usr/share/thingsboard/conf/* ${{targets.subpkgdir}}/config
 
-          mkdir -p /usr/share/fonts/
-          fc-cache -fv
-          mkdir -p ${{targets.subpkgdir}}/usr/share/fonts/
-          cp -r /usr/share/fonts/ ${{targets.subpkgdir}}/usr/share/
+          # mkdir -p /usr/share/fonts/
+          # fc-cache -fv
+          # mkdir -p ${{targets.subpkgdir}}/usr/share/fonts/
+          # cp -r /usr/share/fonts/ ${{targets.subpkgdir}}/usr/share/
     test:
       pipeline:
         - name: Test server logs
