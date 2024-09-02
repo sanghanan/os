@@ -15,6 +15,7 @@ environment:
       - dpkg # dpkg requires gnutar and xz
       - gnutar
       - jq
+      - lcms2
       - maven
       - nodejs-16
       - openjdk-17
@@ -132,6 +133,7 @@ subpackages:
     dependencies:
       runtime:
         - nodejs-16
+        - lcms2
     pipeline:
       - name: Move tb-web-ui to target directories
         runs: |
