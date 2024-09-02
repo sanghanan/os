@@ -126,7 +126,7 @@ subpackages:
           mkdir -p /usr/share/fonts/
           fc-cache -fv
           mkdir -p ${{targets.subpkgdir}}/usr/share/fonts/
-          cp -r /usr/share/fonts/ ${{targets.subpkgdir}}/usr/share/fonts/
+          cp -r /usr/share/fonts/ ${{targets.subpkgdir}}/usr/share/
     test:
       pipeline:
         - name: Test server logs
