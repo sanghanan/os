@@ -102,6 +102,49 @@ subpackages:
             package: kafka
             version: ${{vars.major-minor-version}}
 
+  - name: kafka-apache-oci-entrypoint-${{vars.major-minor-version}}
+    description: "entrypoint scripts and config for apache kafka image"
+    dependencies:
+      provides:
+        - kafka-apache-oci-entrypoint=${{package.full-version}}
+      runtime:
+        - busybox
+        - bash
+        - procps
+    pipeline:
+      - runs: |
+          mkdir -p ${{targets.contextdir}}/opt/kafka
+          mkdir -p ${{targets.contextdir}}/var/lib/kafka/data
+          mkdir -p ${{targets.contextdir}}/etc/kafka/secrets
+          mkdir -p ${{targets.contextdir}}/etc/kafka/docker
+          mkdir -p ${{targets.contextdir}}/usr/logs
+          mkdir -p ${{targets.contextdir}}/mnt/shared/config
+          
+          ln -sf /usr/lib/kafka/bin ${{targets.contextdir}}/opt/kafka/bin
+          ln -sf /usr/lib/kafka/libs ${{targets.contextdir}}/opt/kafka/libs
+          ln -sf /usr/lib/kafka/config ${{targets.contextdir}}/opt/kafka/config
+
+          ./docker/jvm/
+          
+          # Copy actual Docker scripts from the Kafka repository
+          # These scripts are in the docker/ directory of the Kafka source
+          if [ -d docker ]; then
+            cp -r docker/* ${{targets.contextdir}}/etc/kafka/docker/
+            chmod +x ${{targets.contextdir}}/etc/kafka/docker/*
+          fi
+          
+          # Copy default configs to /etc/kafka/docker/
+          cp /usr/lib/kafka/config/log4j.properties ${{targets.contextdir}}/etc/kafka/docker/log4j.properties
+          cp /usr/lib/kafka/config/tools-log4j.properties ${{targets.contextdir}}/etc/kafka/docker/tools-log4j.properties
+          
+          # Copy KRaft config if it exists, otherwise use regular server.properties
+          if [ -f /usr/lib/kafka/config/kraft/server.properties ]; then
+            cp /usr/lib/kafka/config/kraft/server.properties ${{targets.contextdir}}/etc/kafka/docker/server.properties
+          else
+            cp /usr/lib/kafka/config/server.properties.original ${{targets.contextdir}}/etc/kafka/docker/server.properties
+          fi
+
+
 test:
   environment:
     contents:
